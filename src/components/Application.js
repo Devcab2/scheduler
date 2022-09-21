@@ -1,8 +1,7 @@
-import React from "react";
 import DayList from "./DayList";
 import "components/Application.scss";
-import React, {useState} from react;
-import reactDom from "react-dom";
+import  {useState} from "react";
+import React from "react";
 
 const days = [
   {
