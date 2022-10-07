@@ -6,7 +6,7 @@ import Empty from "./Empty";
 import useVisualMode from "hooks/useVisualMode";
 import { moduleExpression } from "@babel/types";
 import Form from "./Form";
-impost Status from "./Status";
+import Status from "./Status";
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
@@ -53,7 +53,7 @@ export default function Appointment(props) {
         onSave={save}
       /> 
       )}
-      
+
       {mode === SAVING && <Status message={"Saving"}/>}
       
     </article>
