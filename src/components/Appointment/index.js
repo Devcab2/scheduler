@@ -6,15 +6,31 @@ import Empty from "./Empty";
 import useVisualMode from "hooks/useVisualMode";
 import { moduleExpression } from "@babel/types";
 import Form from "./Form";
+impost Status from "./Status";
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
+const SAVING = "SAVING";
 
+// apoointment info
 export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
+  
+  //save interview
+  function save(name, interviewer) {
+    transition(SAVING);
+    const interview = {
+      student: name,
+      interviewer,
+    };
+    props.bookInterview(props.id, interview).then(() => {
+      transition(SHOW);
+    } )
+  }
+
   return (
     <article className="appointment">
       <Header time={props.time} />
@@ -30,8 +46,15 @@ export default function Appointment(props) {
       )}
 
       {mode === CREATE && (
-        <Form interviewers={props.interviewers} onCancel={() => back(EMPTY)} />
+        <Form
+        interviewers={props.interviewers}
+        onCancel={() => back(EMPTY)}
+        // -- form is capturing name and interviewer from save function
+        onSave={save}
+      /> 
       )}
+      
+      {mode === SAVING && <Status message={"Saving"}/>}
       
     </article>
   );

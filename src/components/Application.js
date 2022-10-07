@@ -18,6 +18,26 @@ export default function Application(props) {
     interviewers:{},
   });
 
+  // updating state at the lowest level
+  function bookInterview(id, interview) {
+    console.log(id, interview);
+    const appointment = {
+      ...state.appointments[id],
+      interview: {...interview},
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+    // setState({
+    //   ...state,
+    //   appointments,
+    // });
+    return axios.put(`/api/appointments/${id}`, appointment).then(() => {
+      setState({...state,appointments});
+    })
+  }
+
   const dailyAppointments = getAppointmentsForDay(state, state.day);
 
   const schedule = dailyAppointments.map((appointment) => {
@@ -31,17 +51,14 @@ export default function Application(props) {
         time={appointment.time}
         interview={interview}
         interviewers={interviewers}
+        bookInterview={bookInterview}
       />
     );
   });
 
-
   const setDay = (day) => setState({...state, day});
-  // const setDays = (days) => setState((prev) => ({...prev, days})); 
 
   useEffect(() => {
-    // axios.get("/api/days").then((response) => {
-    //   setDays(response.data);
     Promise.all([
       axios.get("/api/days"),
       axios.get("/api/appointments"),
