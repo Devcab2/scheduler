@@ -29,15 +29,29 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment,
     };
-    // setState({
-    //   ...state,
-    //   appointments,
-    // });
+    
     return axios.put(`/api/appointments/${id}`, appointment).then(() => {
-      setState({...state,appointments});
-    })
+      setState({...state, appointments});
+    });
   }
 
+  //cancel interview
+  function cancelInterview(id) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null,
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+    return axios.delete(`/api.appointments/${id}`).then(() => {
+      setState({...state, appointments});
+    });
+  }
+
+
+  // return array of appointment obj
   const dailyAppointments = getAppointmentsForDay(state, state.day);
 
   const schedule = dailyAppointments.map((appointment) => {
@@ -52,6 +66,7 @@ export default function Application(props) {
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });
@@ -97,16 +112,7 @@ export default function Application(props) {
       </section>
       <section className="schedule">
       {schedule} 
-        {/* {
-          <Appointment 
-          key={appointment.id} 
-          {...appointment} 
-          />
-        ))}
-          <Appointment 
-          key="last" 
-          time="5pm" 
-          /> */}
+       <Appointment key="last" time="5pm" />
       </section>
     </main>
   );
