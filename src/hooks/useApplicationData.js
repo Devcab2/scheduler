@@ -22,6 +22,7 @@ export default function useApplicationData() {
   
 
   // -- makes HTTP request; updating the state object starting at lowest level
+  
   function bookInterview(id, interview) {
     console.log(id, interview);
     const appointment = {
