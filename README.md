@@ -1,5 +1,19 @@
 # Interview Scheduler
 
+## Description
+scheduler app is a version of calendar that allows users to book appointments and specific times with specific people.
+
+## Screen Shots
+
+## App
+
+## Confirm
+
+## Deleting
+
+## Saving
+
+
 ## Setup
 
 Install dependencies with `npm install`.
