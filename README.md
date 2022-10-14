@@ -6,13 +6,13 @@ scheduler app is a version of calendar that allows users to book appointments an
 ## Screen Shots
 
 ## App
-
+!["App screenshot"](https://github.com/Devcab2/scheduler/blob/master/docs/scheduler-app.png?raw=true)
 ## Confirm
-
+!["Confirmation message"](https://github.com/Devcab2/scheduler/blob/master/docs/scheduler-confirmation.png?raw=true)
 ## Deleting
-
+!["Delete Loading"](https://github.com/Devcab2/scheduler/blob/master/docs/scheduler-deleting.png?raw=true)
 ## Saving
-
+!["Saving message"](https://github.com/Devcab2/scheduler/blob/master/docs/scheduler-saving.png?raw=true)
 
 ## Setup
 
