@@ -55,7 +55,6 @@ describe("Form", () => {
     fireEvent.change(getByPlaceholderText("Enter Student Name"), {
       target: { value: "Lydia Miller-Jones" },
     });
-
     fireEvent.click(getByText("Save"));
 
     expect(queryByText(/student name cannot be blank/i)).toBeNull();
@@ -90,4 +89,5 @@ describe("Form", () => {
 
     expect(onCancel).toHaveBeenCalledTimes(1);
   });
+  
 });
